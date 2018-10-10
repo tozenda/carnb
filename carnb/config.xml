@@ -3,7 +3,7 @@
     <name>carnb</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://130.190.116.119:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -82,4 +82,10 @@
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^2.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
+    <plugin name="cordova-plugin-googlemaps" spec="^2.4.6">
+        <variable name="API_KEY_FOR_IOS" value="AIzaSyA4W9dDrcHu0XLec5srkde92s6k5xSsUV8" />
+        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyA4W9dDrcHu0XLec5srkde92s6k5xSsUV8" />
+    </plugin>
+    <allow-navigation href="http://130.190.116.119:8100" sessionid="26cab04d" />
+    <engine name="browser" spec="5.0.4" />
 </widget>
