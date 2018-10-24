@@ -1,15 +1,33 @@
 <ion-header>
-	<ion-navbar>
-		<button ion-button menuToggle>
-			<ion-icon name="mise_en_location"></ion-icon>
-		</button>
-		<ion-title>Se connecter</ion-title>
-	</ion-navbar>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="mise_en_location"></ion-icon>
+    </button>
+    <ion-title>Formulaire</ion-title>
+  </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-	<h3>Rentrez vos identifiants</h3>
+  <h3>Rendre ma voiture disponible</h3>
 
+  <form (ngSubmit)="logForm()">
+    <ion-list>
+			<ion-label color="primary">Heure limite</ion-label>
+			<!-- Time Picker https://www.npmjs.com/package/amazing-time-picker -->
+      <input atp-time-picker [(ngModel)]="limit" name="time-limit" />
+
+      <ion-label color="primary">Recupération autour de ma position</ion-label>
+
+      <ion-range min="100" max="1000" step="20" [(ngModel)]="range" name="range-limit">
+        <ion-label range-left>100m</ion-label>
+        <ion-label range-right>1km</ion-label>
+      </ion-range>
+
+      <button ion-button type="submit" block>Confirmation</button>
+    </ion-list>
+  </form>
+
+  <!--
 	<form (ngSubmit)="logForm()">
 		<ion-list>
 
@@ -29,5 +47,7 @@
 		</ion-list>
 	</form>
 
+
 	<button ion-button secondary menuToggle>Toggle Menu</button>
+		-->
 </ion-content>

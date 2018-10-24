@@ -12,6 +12,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps } from '@ionic-native/google-maps'
 import { LoginPage } from '../pages/login/login';
+import { MiseEnLocationPage } from '../pages/mise-en-location/mise-en-location';
+import { AmazingTimePickerModule } from 'amazing-time-picker';
 
 @NgModule({
   declarations: [
@@ -19,19 +21,22 @@ import { LoginPage } from '../pages/login/login';
     HomePage,
     ListPage,
     LoginPage,
-    SubscriptionPage
+    SubscriptionPage,
+    MiseEnLocationPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AmazingTimePickerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
+    ListPage, 
     LoginPage,
-    SubscriptionPage
+    SubscriptionPage,
+    MiseEnLocationPage
   ],
   providers: [
     StatusBar,

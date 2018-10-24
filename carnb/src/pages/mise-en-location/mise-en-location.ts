@@ -8,11 +8,18 @@ import { AlertController } from 'ionic-angular';
 })
 
 export class MiseEnLocationPage {
+	
+	
+	date : Date = new Date();
+	// We get curent time (+ 1 hour) to display by default
+	limit : string = this.date.getHours() + 1 + ":" + this.date.getMinutes();
+	range : number = 200;
 
 	constructor(public navCtrl: NavController, private alertCtrl: AlertController) {
 
 	}
 
+	/*
 	rec_voiture = {type:null, couleur:null, immatriculation:null, marque:null, modele:null};
 	// tabMarqueModele: { marque: string[]}[] = [
 	// this.tabMarqueModele.marque['Citroen'] = ;
@@ -31,10 +38,13 @@ export class MiseEnLocationPage {
 		""
 		]
 	};
+	*/
 
 	logForm(){
-		console.log(this.rec_voiture);
+		console.log(this.limit);
+		console.log(this.range);
 	}
+	
 
 
 
