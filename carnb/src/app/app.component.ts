@@ -15,7 +15,7 @@ import { SubscriptionPage } from '../pages/subscription/subscription';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any;
 
   pages: Array<{title: string, component: any}>;
 
@@ -35,9 +35,11 @@ export class MyApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+      this.rootPage = HomePage;
+
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.rootPage = HomePage;
+      
     });
   }
 
