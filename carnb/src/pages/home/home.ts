@@ -96,8 +96,8 @@ export class HomePage {
 
   loadMap() {
     Environment.setEnv({
-      'API_KEY_FOR_BROWSER_DEBUG' : 'AIzaSyA4W9dDrcHu0XLec5srkde92s6k5xSsUV8',
-      'API_KEY_FOR_BROWSER_RELEASE' : 'AIzaSyA4W9dDrcHu0XLec5srkde92s6k5xSsUV8'
+      'API_KEY_FOR_BROWSER_DEBUG' : '',
+      'API_KEY_FOR_BROWSER_RELEASE' : ''
     })
     
     this.geoLocation.getCurrentPosition().then((resp) => {

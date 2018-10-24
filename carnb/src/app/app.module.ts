@@ -5,13 +5,15 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { SubscriptionPage } from '../pages/subscription/subscription';
+import { LoginPage } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps } from '@ionic-native/google-maps'
-import { LoginPage } from '../pages/login/login';
+import { SubscriptionPage } from '../pages/subscription/subscription';
+import { ProfilePage } from '../pages/profile/profile';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { LoginPage } from '../pages/login/login';
     HomePage,
     ListPage,
     LoginPage,
-    SubscriptionPage
+    SubscriptionPage, 
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { LoginPage } from '../pages/login/login';
     HomePage,
     ListPage,
     LoginPage,
-    SubscriptionPage
+    SubscriptionPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,
