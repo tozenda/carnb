@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { SubscriptionPage } from '../subscription/subscription';
 
 @Component({
 	selector: 'page-login',
@@ -32,6 +33,10 @@ export class LoginPage {
 		else{
 			this.presentAlert();
 		}
+	}
+
+	navigateToSubscriptionPage(): void {
+		this.navCtrl.push(SubscriptionPage);
 	}
 
 }
