@@ -1,7 +1,17 @@
 import { Component } from '@angular/core';
-import { NavController, Platform } from 'ionic-angular';
+import { NavController, Platform, Alert } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
-import { GoogleMaps, GoogleMap, Environment, LatLng, CameraPosition, ILatLng, BaseArrayClass, MarkerIcon, Marker} from '@ionic-native/google-maps';
+import { GoogleMaps,
+  GoogleMap, 
+  Environment, 
+  LatLng, 
+  CameraPosition, 
+  ILatLng, 
+  MarkerIcon,
+  GoogleMapsEvent, 
+  Marker,
+  BaseArrayClass} from '@ionic-native/google-maps';
+import { LiteralArray } from '@angular/compiler';
 
 @Component({
   selector: 'page-home',
@@ -11,6 +21,11 @@ export class HomePage {
 
   private latitude : number;
   private longitude : number;
+  private markerLatLng : LatLng = new LatLng(0,0);
+
+  private POINTS : BaseArrayClass<LatLng>;
+
+
   initialMapLoad: boolean = true;
   map : GoogleMap;
 
@@ -24,6 +39,10 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public geoLocation : Geolocation) {
     
+  }
+
+  ionViewDidLoad(){
+    this.loadMap();
   }
   
   ionViewWillEnter(){
@@ -42,6 +61,38 @@ export class HomePage {
     this.map.setDiv(null);
   }
 
+  initPoints(){
+    this.POINTS = new BaseArrayClass<LatLng>();
+    let pt1 : LatLng = new LatLng(45.183914,5.753960);
+    let pt2 : LatLng = new LatLng(45.184412,5.765550);
+    let pt3 : LatLng = new LatLng(45.185114,5.770380);
+    let pt4 : LatLng = new LatLng(45.197885,5.776313);
+    this.POINTS.push(pt1);
+    this.POINTS.push(pt2);
+    this.POINTS.push(pt3);
+    this.POINTS.push(pt4);
+  }
+
+  addMarker(){
+    this.markerLatLng.lng = this.longitude;
+    this.markerLatLng.lat = this.latitude;
+    this.initPoints();
+    this.POINTS.forEach(element => {
+      this.map.addMarker({
+        position : element,
+        iconData : {
+          url : "../assets/imgs/car.png"
+        }
+          }).then((marker : Marker) => {
+              marker.showInfoWindow();
+              console.log(marker);
+              marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+                confirm("Souhaitez vous réserver cette voiture ?");
+              });
+      });
+    });
+  }
+
 
   loadMap() {
     Environment.setEnv({
@@ -57,8 +108,9 @@ export class HomePage {
       let CurrentPosition : LatLng = new LatLng(this.latitude,this.longitude);
       let CameraPosition : CameraPosition<ILatLng> = {
         target : CurrentPosition,
-        zoom : 22
-      }; 
+        zoom : 18
+      };
+      this.addMarker();
       this.map.moveCamera(CameraPosition);
      }).catch((error) => {
        console.log('Error getting location', error);
@@ -67,13 +119,6 @@ export class HomePage {
     
 
     this.map = GoogleMaps.create('map_canvas');
-    this.map.addMarker({
-      'position': {lat : 5.724524, lng : 45.188529},
-      'icon': this.icon
-    }).then((marker : Marker) => {
-      marker.showInfoWindow();
-      console.log(marker);
-    });
   
   }
 
