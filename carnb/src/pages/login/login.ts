@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { SubscriptionPage } from '../subscription/subscription';
+import { HomePage } from '../home/home';
+
 
 @Component({
 	selector: 'page-login',
@@ -28,7 +30,7 @@ export class LoginPage {
 	logForm(){
 		console.log(this.login);
 		if(this.login.password == "test" && this.login.mail=="test"){
-			console.log("Success");
+			this.navigateToHomePage();
 		}
 		else{
 			this.presentAlert();
@@ -39,4 +41,8 @@ export class LoginPage {
 		this.navCtrl.push(SubscriptionPage);
 	}
 
+
+	navigateToHomePage(): void {
+		this.navCtrl.push(HomePage);
+	}
 }
