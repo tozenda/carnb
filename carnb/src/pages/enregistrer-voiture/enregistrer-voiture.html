@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Enregistrer une voiture</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>Enregistrer une voiture</h3>
+
+  <form (ngSubmit)="logForm()">
+    <ion-list>
+
+      <ion-item>
+        <ion-label color="primary">Marque</ion-label>
+        <ion-input [(ngModel)]="voiture.prenom" name="prenom"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary">Modèle</ion-label>
+        <ion-input [(ngModel)]="voiture.nom" name="nom"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary">Couleur</ion-label>
+        <ion-input [(ngModel)]="voiture.nom" name="nom"></ion-input>
+      </ion-item>
+
+
+      <!-- <ion-buttons>
+        <button ion-button (click)="navigateToLoginPage()">Enregistrer</button>
+      </ion-buttons> -->
+    </ion-list>
+  </form>
+
+  <!-- <button ion-button secondary menuToggle>Toggle Menu</button> -->
+</ion-content>
