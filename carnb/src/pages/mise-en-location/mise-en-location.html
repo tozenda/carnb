@@ -3,22 +3,35 @@
     <button ion-button menuToggle>
       <ion-icon name="mise_en_location"></ion-icon>
     </button>
-    <ion-title>Formulaire</ion-title>
+    <ion-title>Rendre ma voiture disponible</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Rendre ma voiture disponible</h3>
 
   <form (ngSubmit)="logForm()">
     <ion-list>
-			<ion-label color="primary">Heure limite</ion-label>
-			<!-- Time Picker https://www.npmjs.com/package/amazing-time-picker -->
+
+      <ion-label color="primary">Choisir une voiture</ion-label>
+      <!-- If the user only has one vehicule -->
+      <div *ngIf="vehicules.length == 1">
+        <!-- Empty disabled select -->
+        <ion-select [(ngModel)]="vehiculePicked" name="vehicules-disabled" [placeholder]="vehiculePicked" [disabled]="true"></ion-select>
+      </div>
+      <!-- Else -->
+      <div *ngIf="vehicules.length != 1">
+        <ion-select [(ngModel)]="vehiculePicked" name="vehicules-enabled" [placeholder]="vehiculePicked" [disabled]="false">
+          <ion-option *ngFor="let vehicule of vehicules">{{vehicule}}</ion-option>
+        </ion-select>
+      </div>
+
+      <ion-label color="primary">Heure limite</ion-label>
+      <!-- Time Picker https://www.npmjs.com/package/amazing-time-picker -->
       <input atp-time-picker [(ngModel)]="limit" name="time-limit" />
 
-      <ion-label color="primary">Recupération autour de ma position</ion-label>
+      <ion-label color="primary">Rayon de recupération autour de ma position: {{range}}m</ion-label>
 
-      <ion-range min="100" max="1000" step="20" [(ngModel)]="range" name="range-limit">
+      <ion-range min="100" max="1000" step="100" [(ngModel)]="range" name="range-limit">
         <ion-label range-left>100m</ion-label>
         <ion-label range-right>1km</ion-label>
       </ion-range>
@@ -26,28 +39,4 @@
       <button ion-button type="submit" block>Confirmation</button>
     </ion-list>
   </form>
-
-  <!--
-	<form (ngSubmit)="logForm()">
-		<ion-list>
-
-			<ion-item>
-				<ion-label color="primary">Type de voiture</ion-label>
-				<ion-input [(ngModel)]="rec_voiture.type" name="type"></ion-input>
-			</ion-item>
-
-			<ion-item>
-				<ion-label color="primary">Couleur de la voiture</ion-label>
-				<ion-input [(ngModel)]="rec_voiture.couleur" name="couleur"></ion-input>
-			</ion-item>
-
-
-			<button ion-button type="submit" block>Confirmation</button>
-
-		</ion-list>
-	</form>
-
-
-	<button ion-button secondary menuToggle>Toggle Menu</button>
-		-->
 </ion-content>

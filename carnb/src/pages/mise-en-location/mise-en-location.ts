@@ -15,37 +15,17 @@ export class MiseEnLocationPage {
 	limit : string = this.date.getHours() + 1 + ":" + this.date.getMinutes();
 	range : number = 200;
 
+	vehicules : string[] = ["one"];
+	// By default the vehicule picked is the first of the list
+	vehiculePicked : string = this.vehicules[0];
+
 	constructor(public navCtrl: NavController, private alertCtrl: AlertController) {
 
 	}
-
-	/*
-	rec_voiture = {type:null, couleur:null, immatriculation:null, marque:null, modele:null};
-	// tabMarqueModele: { marque: string[]}[] = [
-	// this.tabMarqueModele.marque['Citroen'] = ;
-	// { marque: "Citroen", modele: ["C4","C3"] }
-	// // { "marque": "Renault", modele: "Ready" },
-	// // { "marque": "Audi", modele: "Started" }
-	// ];
-	tabMarqueModele = {
-		"Citroen":[
-			"C3",
-			"C4"
-		], 
-		"Audi":[
-		"A3",
-		"A5",
-		""
-		]
-	};
-	*/
 
 	logForm(){
 		console.log(this.limit);
 		console.log(this.range);
 	}
-	
-
-
 
 }
