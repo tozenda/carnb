@@ -18,13 +18,16 @@ export class MiseEnLocationPage {
 		this.carList = carList;
 	}
 
-	carList : ListVoitureProvider;
-	user : User = this.carList.getCurrentUser();
-	position : LatLng = this.carList.getCurrentLocation();
+	carList = new ListVoitureProvider();
+	user : User = this.carList.CurrentUser;
+	position : LatLng = this.carList.Location;
 
 	date : Date = new Date();
 	// We get curent time (+ 1 hour) to display by default
-	limit : string = this.date.getHours() + 1 + ":" + this.date.getMinutes();
+	hours = this.date.getHours() + 1;
+	minutes = this.date.getMinutes();
+	limit : string = this.hours + ":" + this.minutes;
+
 	range : number = 200;
 
 	vehicules : Voiture[] = this.carList.getVoiture(this.user);
@@ -35,7 +38,7 @@ export class MiseEnLocationPage {
 	logForm(){
 		// We change the vehicules parameters accordigly
 		this.vehiculePicked.position = this.position;	
-		this.vehiculePicked.reservation = new Reservation(new Date(this.limit), null, null, this.position, this.range, null);
+		this.vehiculePicked.reservation = new Reservation(new Date(Date.parse(this.limit)), null, null, this.position, this.range, null);
 		this.vehiculePicked.available = true;
 
 		console.log(this.vehiculePicked);

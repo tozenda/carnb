@@ -1,12 +1,10 @@
-import { Voiture } from '../entities/Voiture';
+import { Voiture } from './voiture';
 
 export class User {
 
-    constructor( firstName: string, lastName: string, carList: Voiture[], reviewList: string[]) {
+    constructor( firstName: string, lastName: string) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.carList = carList;
-        this.reviewList = reviewList;
     }
 
     firstName: string;

@@ -16,12 +16,12 @@
       <!-- If the user only has one vehicule -->
       <div *ngIf="vehicules.length == 1">
         <!-- Empty disabled select -->
-        <ion-select [(ngModel)]="vehiculePicked" name="vehicules-disabled" [placeholder]="vehiculePicked" [disabled]="true"></ion-select>
+        <ion-select [(ngModel)]="vehiculePicked" name="vehicules-disabled" [placeholder]="vehiculePicked.model" [disabled]="true"></ion-select>
       </div>
       <!-- Else -->
       <div *ngIf="vehicules.length != 1">
-        <ion-select [(ngModel)]="vehiculePicked" name="vehicules-enabled" [placeholder]="vehiculePicked" [disabled]="false">
-          <ion-option *ngFor="let vehicule of vehicules">{{vehicule}}</ion-option>
+        <ion-select [(ngModel)]="vehiculePicked" name="vehicules-enabled" [placeholder]="vehiculePicked.model" [disabled]="false">
+          <ion-option *ngFor="let vehicule of vehicules">{{vehicule.model}}</ion-option>
         </ion-select>
       </div>
 

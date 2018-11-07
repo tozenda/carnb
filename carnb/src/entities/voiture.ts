@@ -1,17 +1,15 @@
-import { User } from '../entities/user';
-import { Reservation } from '../entities/reservation';
+import { User } from './user';
+import { Reservation } from './reservation';
 import { LatLng } from '@ionic-native/google-maps';
 
 export class Voiture {
 
-    constructor( position: LatLng, user: User, model: string, brand: string, available: boolean, price: number, reservation: Reservation) {
+    constructor(position: LatLng, user: User, model: string, brand: string, price: number) {
         this.position = position;
         this.user = user;
         this.model = model;
         this.brand = brand;
-        this.available = available;
         this.price = price;
-        this.reservation = reservation;
     }
 
     // position
@@ -23,7 +21,7 @@ export class Voiture {
     //marque
     brand: string;
     // enLocation
-    available: boolean;
+    available: boolean = false;
     // prix/h
     price: number;
     // reservation
