@@ -14,6 +14,8 @@ import { GoogleMaps } from '@ionic-native/google-maps';
 import { IonicStorageModule } from '@ionic/storage';
 import { SubscriptionPage } from '../pages/subscription/subscription';
 import { ProfilePage } from '../pages/profile/profile';
+import { MiseEnLocationPage } from '../pages/mise-en-location/mise-en-location';
+import { AmazingTimePickerModule } from 'amazing-time-picker';
 import { ListVoitureProvider } from '../providers/list-voiture/list-voiture';
 
 
@@ -24,21 +26,25 @@ import { ListVoitureProvider } from '../providers/list-voiture/list-voiture';
     ListPage,
     LoginPage,
     SubscriptionPage, 
-    ProfilePage
+    ProfilePage,
+    SubscriptionPage,
+    MiseEnLocationPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AmazingTimePickerModule,
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
+    ListPage, 
     LoginPage,
     SubscriptionPage,
-    ProfilePage
+    ProfilePage,
+    MiseEnLocationPage
   ],
   providers: [
     StatusBar,
