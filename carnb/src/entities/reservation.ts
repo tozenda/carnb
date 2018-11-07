@@ -1,8 +1,9 @@
 import { User } from '../entities/user';
+import { LatLng } from '@ionic-native/google-maps';
 
 export class Reservation {
 
-    constructor( availableTime: number, takenTime: number, returnTime: number, location: number[], user: User[]) {
+    constructor( availableTime: number, takenTime: number, returnTime: number, location: LatLng, user: User[]) {
         this.availableTime = availableTime;
         this.takenTime = takenTime;
         this.returnTime = returnTime;
@@ -17,7 +18,7 @@ export class Reservation {
     // heure de rendu
     returnTime: number;
     //localisation de rendu/prise
-    location: number[];
+    location: LatLng;
     //user qui loue
     user: User[];
 }
