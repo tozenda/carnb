@@ -10,11 +10,14 @@ import { LoginPage } from '../pages/login/login';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
-import { GoogleMaps } from '@ionic-native/google-maps'
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { IonicStorageModule } from '@ionic/storage';
 import { SubscriptionPage } from '../pages/subscription/subscription';
 import { ProfilePage } from '../pages/profile/profile';
 import { MiseEnLocationPage } from '../pages/mise-en-location/mise-en-location';
 import { AmazingTimePickerModule } from 'amazing-time-picker';
+import { ListVoitureProvider } from '../providers/list-voiture/list-voiture';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +33,8 @@ import { AmazingTimePickerModule } from 'amazing-time-picker';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AmazingTimePickerModule
+    AmazingTimePickerModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -47,7 +51,8 @@ import { AmazingTimePickerModule } from 'amazing-time-picker';
     SplashScreen,
     Geolocation,
     GoogleMaps,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ListVoitureProvider
   ]
 })
 export class AppModule {}
