@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { ListVoitureProvider } from '../../providers/list-voiture/list-voiture';
+import { Voiture } from '../../entities/voiture';
+import { User } from '../../entities/user';
+import { LatLng } from '@ionic-native/google-maps';
+import { Reservation } from '../../entities/reservation';
 
 @Component({
 	selector: 'page-mise-en-location',
@@ -9,23 +14,31 @@ import { AlertController } from 'ionic-angular';
 
 export class MiseEnLocationPage {
 	
-	
+	constructor(public navCtrl: NavController, private alertCtrl: AlertController, carList: ListVoitureProvider ) {
+		this.carList = carList;
+	}
+
+	carList : ListVoitureProvider;
+	user : User = this.carList.getCurrentUser();
+	position : LatLng = this.carList.getCurrentLocation();
+
 	date : Date = new Date();
 	// We get curent time (+ 1 hour) to display by default
 	limit : string = this.date.getHours() + 1 + ":" + this.date.getMinutes();
 	range : number = 200;
 
-	vehicules : string[] = ["one"];
+	vehicules : Voiture[] = this.carList.getVoiture(this.user);
+
 	// By default the vehicule picked is the first of the list
-	vehiculePicked : string = this.vehicules[0];
-
-	constructor(public navCtrl: NavController, private alertCtrl: AlertController) {
-
-	}
+	vehiculePicked : Voiture = this.vehicules[0];
 
 	logForm(){
-		console.log(this.limit);
-		console.log(this.range);
+		// We change the vehicules parameters accordigly
+		this.vehiculePicked.position = this.position;	
+		this.vehiculePicked.reservation = new Reservation(new Date(this.limit), null, null, this.position, this.range, null);
+		this.vehiculePicked.available = true;
+
+		console.log(this.vehiculePicked);
 	}
 
 }

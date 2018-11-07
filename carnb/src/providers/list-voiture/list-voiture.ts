@@ -3,6 +3,7 @@ import { UrlSerializer } from 'ionic-angular';
 import { User } from '../../entities/user';
 import { Voiture } from '../../entities/voiture';
 import { Reservation } from '../../entities/reservation';
+import { LatLng } from '@ionic-native/google-maps';
 
 /*
   Generated class for the ListVoitureProvider provider.
@@ -12,22 +13,44 @@ import { Reservation } from '../../entities/reservation';
 */
 @Injectable()
 export class ListVoitureProvider {
-  CurrentUser: User;
-  Location: number[];
+  private CurrentUser: User;
+  private Location: LatLng;
 
   voitureList: Voiture[];
   userList: User[];
-  reservationList:Reservation[];
-
+  reservationList: Reservation[];
 
   constructor() {
     
+  }
+
+  getCurrentUser(){
+    return this.CurrentUser;
+  }
+
+  setCurrentUser(user:User){
+    this.CurrentUser = user;
+  }
+
+  getCurrentLocation(){
+    return this.Location;
+  }
+
+  setCurrentLocation(location:LatLng){
+    this.Location = location;
+  }
+
+
+  addNewVoiture(position: LatLng, model: string, brand: string, inUse: boolean, price: number, reservation: Reservation, user:User){
+  	this.voitureList.push(new Voiture(position, user, model, brand, inUse, price, reservation));
+
   }
 
   addVoiture(voiture: Voiture, user:User){
   	this.voitureList.push(voiture);
 
   }
+
 
   addUser(user: User){
   	this.userList.push(user);
@@ -38,7 +61,7 @@ export class ListVoitureProvider {
   }
 
   getVoiture(user:User){
-  	let voitureList: Voiture[] = user.getVoitureList();
+  	let voitureList: Voiture[] = user.carList;
   	return voitureList;
   }
 
