@@ -21,62 +21,61 @@ export class ListVoitureProvider {
   reservationList: Reservation[];
 
   constructor() {
-    
+
   }
 
-  getCurrentUser(){
+  getCurrentUser() {
     return this.CurrentUser;
   }
 
-  setCurrentUser(user:User){
+  setCurrentUser(user: User) {
     this.CurrentUser = user;
   }
 
-  getCurrentLocation(){
+  getCurrentLocation() {
     return this.Location;
   }
 
-  setCurrentLocation(location:LatLng){
+  setCurrentLocation(location: LatLng) {
     this.Location = location;
   }
 
 
-  addNewVoiture(position: LatLng, model: string, brand: string, inUse: boolean, price: number, reservation: Reservation, user:User){
-  	this.voitureList.push(new Voiture(position, user, model, brand, inUse, price, reservation));
+  addNewVoiture(position: LatLng, model: string, brand: string, inUse: boolean, price: number, reservation: Reservation, user: User) {
+    this.voitureList.push(new Voiture(position, user, model, brand, inUse, price, reservation));
+  }
+
+    getVoiture(user: User){
+      let voitureList: Voiture[] = user.carList;
+      return voitureList;
+    }
+
+    addVoiture(voiture: Voiture, user: User){
+      this.voitureList.push(voiture);
+    }
+
+
+
+    addUser(user: User){
+      this.userList.push(user);
+    }
+
+
+
+  getUser(lastName: string, firstName: string) {
+    for (let entry of this.userList) {
+      if (entry.firstName == firstName && entry.lastName == lastName) {
+        return (entry);
+      }
+    }
+  }
+
+  addNewUser(lastName: string, firstName: string) {
+    this.userList.push(new User(lastName, firstName, null, null));
+  }
+
+  addReservation() {
 
   }
 
-  addVoiture(voiture: Voiture, user:User){
-  	this.voitureList.push(voiture);
-  }
-
-
-
-  addUser(user: User){
-  	this.userList.push(user);
-  }
-
-
-  	getVoiture(user:User){
-  		let voitureList: Voiture[] = user.carList;
-  		return voitureList;
-  	}
-
-
-  	getUser(lastName:string, firstName:string){
-  		for (let entry of this.userList) {
-  			if(entry.firstName == firstName && entry.lastName == lastName){
-  				return(entry);
-  			}
-  		}
-  	}
-
-  	addNewUser(lastName: string, firstName:string){
-  		this.userList.push(new User(lastName, firstName, null, null));
-  	}
-
-  	addReservation(){
-
-  	}
-
-  }
+}
