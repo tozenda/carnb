@@ -10,9 +10,11 @@ import { LoginPage } from '../pages/login/login';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
-import { GoogleMaps } from '@ionic-native/google-maps'
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { IonicStorageModule } from '@ionic/storage';
 import { SubscriptionPage } from '../pages/subscription/subscription';
 import { ProfilePage } from '../pages/profile/profile';
+import { ListVoitureProvider } from '../providers/list-voiture/list-voiture';
 
 
 @NgModule({
@@ -27,6 +29,7 @@ import { ProfilePage } from '../pages/profile/profile';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,7 +45,8 @@ import { ProfilePage } from '../pages/profile/profile';
     SplashScreen,
     Geolocation,
     GoogleMaps,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ListVoitureProvider
   ]
 })
 export class AppModule {}
