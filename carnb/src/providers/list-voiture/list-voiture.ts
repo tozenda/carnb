@@ -9,42 +9,49 @@ import { Reservation } from '../../entities/reservation';
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
-*/
-@Injectable()
-export class ListVoitureProvider {
-  CurrentUser: User;
-  Location: number[];
+  */
+  @Injectable()
+  export class DataProvider {
+  	CurrentUser: User;
+  	Location: number[];
 
-  voitureList: Voiture[];
-  userList: User[];
-  reservationList:Reservation[];
+  	carList: Voiture[] = [
+  	new Voiture(), 
+  	new Voiture()
+  	];
+
+  	userList: User[] = [
+  	new User(),
+  	new User()
+  	];
+
+  	reservationList:Reservation[]=[];
 
 
-  constructor() {
-    
+  	addVoiture(voiture: Voiture, user:User){
+  		this.carList.push(voiture);
+
+  	}
+
+  	getVoiture(user:User){
+  		let voitureList: Voiture[] = user.carList;
+  		return voitureList;
+  	}
+
+  	getUser(lastName:string, firstName:string){
+  		for (let entry of this.userList) {
+  			if(entry.firstName == firstName && entry.lastName == lastName){
+  				return(entry);
+  			}
+  		}
+  	}
+
+  	addUser(lastName: string, firstName:string){
+  		this.userList.push(new User(lastName, firstName));
+  	}
+
+  	addReservation(){
+
+  	}
+
   }
-
-  addVoiture(voiture: Voiture, user:User){
-  	this.voitureList.push(voiture);
-
-  }
-
-  addUser(user: User){
-  	this.userList.push(user);
-  }
-
-  addReservation(){
-
-  }
-
-  getVoiture(user:User){
-  	let voitureList: Voiture[] = user.getVoitureList();
-  	return voitureList;
-  }
-
-  getUser(nom:string, prenom:string){
-
-  }
-
-
-}
