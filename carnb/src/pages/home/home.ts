@@ -1,17 +1,21 @@
 import { Component } from '@angular/core';
 import { NavController, Platform, Alert } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
+import { FilterPage } from '../FilterPage/FilterPage';
 import { GoogleMaps,
-  GoogleMap, 
-  Environment, 
-  LatLng, 
-  CameraPosition, 
-  ILatLng, 
+  GoogleMap,
+  Environment,
+  LatLng,
+  CameraPosition,
+  ILatLng,
   MarkerIcon,
-  GoogleMapsEvent, 
+  GoogleMapsEvent,
   Marker,
   BaseArrayClass} from '@ionic-native/google-maps';
 import { LiteralArray } from '@angular/compiler';
+import { PopoverController } from 'ionic-angular';
+import { FilterComponent } from '../../components/filter/filter';
+
 
 @Component({
   selector: 'page-home',
@@ -37,14 +41,14 @@ export class HomePage {
     }
   };
 
-  constructor(public navCtrl: NavController, public geoLocation : Geolocation) {
-    
+  constructor(public navCtrl: NavController, public geoLocation : Geolocation, public popoverCtrl: PopoverController) {
+
   }
 
   ionViewDidLoad(){
     this.loadMap();
   }
-  
+
   ionViewWillEnter(){
     if (!this.initialMapLoad) {
       // reset div & *then* set visibility to smooth out reloading of map
@@ -99,7 +103,7 @@ export class HomePage {
       'API_KEY_FOR_BROWSER_DEBUG' : 'AIzaSyA4W9dDrcHu0XLec5srkde92s6k5xSsUV8',
       'API_KEY_FOR_BROWSER_RELEASE' : 'AIzaSyA4W9dDrcHu0XLec5srkde92s6k5xSsUV8'
     })
-    
+
     this.geoLocation.getCurrentPosition().then((resp) => {
       this.latitude = resp.coords.latitude;
       this.longitude = resp.coords.longitude;
@@ -116,10 +120,22 @@ export class HomePage {
        console.log('Error getting location', error);
      });
 
-    
+
 
     this.map = GoogleMaps.create('map_canvas');
-  
+
+  }
+
+  gotoFilterPage(){
+    // this.navCtrl.push(FilterPage);
+
+  }
+
+  presentPopover(myEvent) {
+    let popover = this.popoverCtrl.create(FilterComponent);
+    popover.present({
+      ev: myEvent
+    });
   }
 
 }

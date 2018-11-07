@@ -1,5 +1,11 @@
 page-home {
     #map_canvas {
         height: 90%;
-    }    
+    }
+
+  .filters {
+    position: absolute;
+    top: 2px;
+    right: 20px;
+  }
 }

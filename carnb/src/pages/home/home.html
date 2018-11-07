@@ -3,6 +3,11 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+    <!-- <button ion-button round class="filters" (click)="gotoFilterPage()"> -->
+    <button ion-button icon-only (click)="presentPopover($event)">
+      <ion-icon name="eye"></ion-icon>
+    </button>
+
   </ion-navbar>
 </ion-header>
 

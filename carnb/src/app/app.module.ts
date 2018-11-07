@@ -12,6 +12,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps } from '@ionic-native/google-maps'
 import { LoginPage } from '../pages/login/login';
+import { FilterPage } from '../pages/FilterPage/FilterPage'
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { LoginPage } from '../pages/login/login';
     HomePage,
     ListPage,
     LoginPage,
-    SubscriptionPage
+    SubscriptionPage,
+    FilterPage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,8 @@ import { LoginPage } from '../pages/login/login';
     HomePage,
     ListPage,
     LoginPage,
-    SubscriptionPage
+    SubscriptionPage,
+    FilterPage
   ],
   providers: [
     StatusBar,

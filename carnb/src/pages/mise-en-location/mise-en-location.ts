@@ -24,7 +24,7 @@ export class MiseEnLocationPage {
 		"Citroen":[
 			"C3",
 			"C4"
-		], 
+		],
 		"Audi":[
 		"A3",
 		"A5",
