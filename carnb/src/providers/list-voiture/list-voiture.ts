@@ -48,26 +48,35 @@ export class ListVoitureProvider {
 
   addVoiture(voiture: Voiture, user:User){
   	this.voitureList.push(voiture);
-
   }
+
 
 
   addUser(user: User){
   	this.userList.push(user);
   }
 
-  addReservation(){
+
+  	getVoiture(user:User){
+  		let voitureList: Voiture[] = user.carList;
+  		return voitureList;
+  	}
+
+
+  	getUser(lastName:string, firstName:string){
+  		for (let entry of this.userList) {
+  			if(entry.firstName == firstName && entry.lastName == lastName){
+  				return(entry);
+  			}
+  		}
+  	}
+
+  	addNewUser(lastName: string, firstName:string){
+  		this.userList.push(new User(lastName, firstName, null, null));
+  	}
+
+  	addReservation(){
+
+  	}
 
   }
-
-  getVoiture(user:User){
-  	let voitureList: Voiture[] = user.carList;
-  	return voitureList;
-  }
-
-  getUser(nom:string, prenom:string){
-
-  }
-
-
-}
