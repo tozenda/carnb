@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 import { SubscriptionPage } from '../pages/subscription/subscription';
+import { MiseEnLocationPage } from '../pages/mise-en-location/mise-en-location';
 
 @Component({
   templateUrl: 'app.html'
@@ -27,7 +28,9 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
       { title: 'Se connecter', component: LoginPage},
-      { title: 'Mon profil', component: ProfilePage}
+      { title: 'Mon profil', component: ProfilePage},
+      { title: 'Subscription', component: SubscriptionPage},
+      { title: 'Location', component: MiseEnLocationPage}
     ];
 
   }

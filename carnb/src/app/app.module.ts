@@ -13,7 +13,8 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps } from '@ionic-native/google-maps'
 import { SubscriptionPage } from '../pages/subscription/subscription';
 import { ProfilePage } from '../pages/profile/profile';
-
+import { MiseEnLocationPage } from '../pages/mise-en-location/mise-en-location';
+import { AmazingTimePickerModule } from 'amazing-time-picker';
 
 @NgModule({
   declarations: [
@@ -22,20 +23,24 @@ import { ProfilePage } from '../pages/profile/profile';
     ListPage,
     LoginPage,
     SubscriptionPage, 
-    ProfilePage
+    ProfilePage,
+    SubscriptionPage,
+    MiseEnLocationPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AmazingTimePickerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
+    ListPage, 
     LoginPage,
     SubscriptionPage,
-    ProfilePage
+    ProfilePage,
+    MiseEnLocationPage
   ],
   providers: [
     StatusBar,
