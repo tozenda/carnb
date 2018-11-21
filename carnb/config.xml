@@ -3,7 +3,7 @@
     <name>carnb</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://130.190.119.52:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -88,5 +88,5 @@
     </plugin>
     <allow-navigation href="http://130.190.116.119:8100" sessionid="26cab04d" />
     <allow-navigation href="http://130.190.119.52:8100" sessionid="7b637b9f" />
-    <engine name="browser" spec="5.0.4" />
+    <engine name="browser" spec="~5.0.4" />
 </widget>
