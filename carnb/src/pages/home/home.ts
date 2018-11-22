@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MiseEnLocationPage } from '../mise-en-location/mise-en-location';
 import { NavController, Platform, Alert } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
+import { FilterPage } from '../filter/filter';
 import {
   GoogleMaps,
   GoogleMap,
@@ -130,5 +131,11 @@ export class HomePage {
     this.navCtrl.push(MiseEnLocationPage);
     console.log(event);
   }
+
+  gotoFilterPage() {
+    this.navCtrl.push(FilterPage);
+
+  }
+
 
 }

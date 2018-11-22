@@ -17,6 +17,7 @@ import { ProfilePage } from '../pages/profile/profile';
 import { MiseEnLocationPage } from '../pages/mise-en-location/mise-en-location';
 import { ListVoitureProvider } from '../providers/list-voiture/list-voiture';
 import { EnregistrerVoiturePage } from '../pages/enregistrer-voiture/enregistrer-voiture';
+import { FilterPage } from '../pages/filter/filter';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { EnregistrerVoiturePage } from '../pages/enregistrer-voiture/enregistrer
     ProfilePage,
     SubscriptionPage,
     MiseEnLocationPage,
-    EnregistrerVoiturePage
+    EnregistrerVoiturePage,
+    FilterPage
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,8 @@ import { EnregistrerVoiturePage } from '../pages/enregistrer-voiture/enregistrer
     SubscriptionPage,
     ProfilePage,
     MiseEnLocationPage,
-    EnregistrerVoiturePage
+    EnregistrerVoiturePage,
+    FilterPage
   ],
   providers: [
     StatusBar,
