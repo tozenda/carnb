@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 import { SubscriptionPage } from '../pages/subscription/subscription';
+import { EnregistrerVoiturePage } from '../pages/enregistrer-voiture/enregistrer-voiture'
 
 @Component({
   templateUrl: 'app.html'
@@ -17,7 +18,7 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{ title: string, component: any }>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
@@ -26,7 +27,9 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
-      { title: 'Subscription', component: SubscriptionPage}
+      { title: 'Subscription', component: SubscriptionPage },
+      { title: 'Profile', component: ProfilePage }
+      // { title: 'Enregistrer une voiture', component: EnregistrerVoiturePage }
     ];
 
   }

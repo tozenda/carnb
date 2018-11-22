@@ -15,25 +15,29 @@
 
       <ion-item>
         <ion-label color="primary">Marque</ion-label>
-        <ion-input [(ngModel)]="voiture.prenom" name="prenom"></ion-input>
+        <ion-input [(ngModel)]="voiture.marque" name="Marque"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label color="primary">Modèle</ion-label>
-        <ion-input [(ngModel)]="voiture.nom" name="nom"></ion-input>
+        <ion-input [(ngModel)]="voiture.modele" name="Modele"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label color="primary">Couleur</ion-label>
-        <ion-input [(ngModel)]="voiture.nom" name="nom"></ion-input>
+        <ion-input [(ngModel)]="voiture.couleur" name="Couleur"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary">Immatriculation</ion-label>
+        <ion-input [(ngModel)]="voiture.immatriculation" name="Immatriculation"></ion-input>
       </ion-item>
 
 
-      <!-- <ion-buttons>
-        <button ion-button (click)="navigateToLoginPage()">Enregistrer</button>
-      </ion-buttons> -->
+      <button ion-button block (click)="saveLink(voiture)">Enregistrer</button>
     </ion-list>
+
   </form>
 
-  <!-- <button ion-button secondary menuToggle>Toggle Menu</button> -->
+
 </ion-content>

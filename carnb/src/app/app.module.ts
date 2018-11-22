@@ -6,12 +6,14 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { SubscriptionPage } from '../pages/subscription/subscription';
+import { EnregistrerVoiturePage } from '../pages/enregistrer-voiture/enregistrer-voiture'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps } from '@ionic-native/google-maps'
 import { LoginPage } from '../pages/login/login';
+import { ProfilePage } from '../pages/profile/profile';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { LoginPage } from '../pages/login/login';
     HomePage,
     ListPage,
     LoginPage,
-    SubscriptionPage
+    ProfilePage,
+    SubscriptionPage,
+    EnregistrerVoiturePage
   ],
   imports: [
     BrowserModule,
@@ -31,14 +35,16 @@ import { LoginPage } from '../pages/login/login';
     HomePage,
     ListPage,
     LoginPage,
-    SubscriptionPage
+    ProfilePage,
+    SubscriptionPage,
+    EnregistrerVoiturePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Geolocation,
     GoogleMaps,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }

@@ -1,16 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Voiture } from './voiture';
+import { VoitureType } from './voitureType';
+
+import { ProfilePage } from '../profile/profile';
+import { hydrateSegment } from 'ionic-angular/umd/navigation/url-serializer';
+import { VoitureService } from '../enregistrer-voiture/voiture.service';
 
 
 @Component({
   selector: 'page-enregistrer-voiture',
   templateUrl: 'enregistrer-voiture.html',
 })
+
 export class EnregistrerVoiturePage {
 
-  //voitures: Voiture[];
-  voiture = {};
+  voiture: VoitureType = { marque: "", modele: "", couleur: "", immatriculation: "" };
+
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -21,5 +27,25 @@ export class EnregistrerVoiturePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad EnregistrerVoiturePage');
   }
+
+  saveLink(voiture: VoitureType) {
+    this.voiture = voiture;
+
+    if (voiture.marque != "" && voiture.modele != "" && voiture.couleur != "" && voiture.immatriculation != "") {
+      this.goToanotherPage(this.voiture);
+    }
+
+  }
+
+  goToanotherPage(voiture) {
+    this.navCtrl.push(ProfilePage, { voiture: voiture });
+  }
+
+  ngOnInit() {
+
+  }
+
+
+
 
 }
