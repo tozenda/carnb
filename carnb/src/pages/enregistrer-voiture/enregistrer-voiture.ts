@@ -4,7 +4,7 @@ import { VoitureType } from './voitureType';
 
 import { ProfilePage } from '../profile/profile';
 import { hydrateSegment } from 'ionic-angular/umd/navigation/url-serializer';
-import { VoitureService } from '../enregistrer-voiture/voiture.service';
+
 
 
 @Component({
