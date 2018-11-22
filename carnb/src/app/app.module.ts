@@ -5,15 +5,19 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { SubscriptionPage } from '../pages/subscription/subscription';
-import { EnregistrerVoiturePage } from '../pages/enregistrer-voiture/enregistrer-voiture'
+import { LoginPage } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
-import { GoogleMaps } from '@ionic-native/google-maps'
-import { LoginPage } from '../pages/login/login';
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { IonicStorageModule } from '@ionic/storage';
+import { SubscriptionPage } from '../pages/subscription/subscription';
 import { ProfilePage } from '../pages/profile/profile';
+import { MiseEnLocationPage } from '../pages/mise-en-location/mise-en-location';
+import { ListVoitureProvider } from '../providers/list-voiture/list-voiture';
+import { EnregistrerVoiturePage } from '../pages/enregistrer-voiture/enregistrer-voiture';
+
 
 @NgModule({
   declarations: [
@@ -21,13 +25,16 @@ import { ProfilePage } from '../pages/profile/profile';
     HomePage,
     ListPage,
     LoginPage,
+    SubscriptionPage,
     ProfilePage,
     SubscriptionPage,
+    MiseEnLocationPage,
     EnregistrerVoiturePage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -35,8 +42,9 @@ import { ProfilePage } from '../pages/profile/profile';
     HomePage,
     ListPage,
     LoginPage,
-    ProfilePage,
     SubscriptionPage,
+    ProfilePage,
+    MiseEnLocationPage,
     EnregistrerVoiturePage
   ],
   providers: [
@@ -44,7 +52,8 @@ import { ProfilePage } from '../pages/profile/profile';
     SplashScreen,
     Geolocation,
     GoogleMaps,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    ListVoitureProvider
   ]
 })
 export class AppModule { }

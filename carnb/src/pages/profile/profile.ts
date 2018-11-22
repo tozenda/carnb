@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { VoitureType } from '../enregistrer-voiture/voitureType';
 import { EnregistrerVoiturePage } from '../enregistrer-voiture/enregistrer-voiture';
+import { MiseEnLocationPage } from '../mise-en-location/mise-en-location';
 
 @Component({
   selector: 'page-profile',
@@ -22,5 +23,9 @@ export class ProfilePage {
   goToSavingCar() {
     this.navCtrl.push(EnregistrerVoiturePage);
   }
+
+  // miseEnLocation() {
+  //   this.navCtrl.push(MiseEnLocationPage);
+  // }
 
 }

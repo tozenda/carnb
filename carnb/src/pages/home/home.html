@@ -3,11 +3,16 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <div id="map_canvas">
   </div>
+
+
+  <button class="center" ion-button round (click)="goToLocation($event)">
+    <ion-icon name="car"></ion-icon>
+  </button>
+
 </ion-content>
