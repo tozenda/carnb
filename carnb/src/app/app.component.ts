@@ -8,7 +8,6 @@ import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 import { SubscriptionPage } from '../pages/subscription/subscription';
-import { EnregistrerVoiturePage } from '../pages/enregistrer-voiture/enregistrer-voiture'
 
 @Component({
   templateUrl: 'app.html'
@@ -29,7 +28,6 @@ export class MyApp {
       { title: 'List', component: ListPage },
       { title: 'Subscription', component: SubscriptionPage },
       { title: 'Profile', component: ProfilePage }
-      // { title: 'Enregistrer une voiture', component: EnregistrerVoiturePage }
     ];
 
   }

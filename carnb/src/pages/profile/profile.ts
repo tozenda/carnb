@@ -17,7 +17,6 @@ export class ProfilePage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.voiture = navParams.get('voiture');
     this.image = navParams.get('image');
-    // console.log(this.image);
   }
 
   goToSavingCar() {

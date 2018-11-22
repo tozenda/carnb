@@ -34,7 +34,6 @@ export class EnregistrerVoiturePage {
     if (voiture.marque != "" && voiture.modele != "" && voiture.couleur != "" && voiture.immatriculation != "") {
       this.goToanotherPage(this.voiture);
     }
-
   }
 
   goToanotherPage(voiture) {
@@ -44,8 +43,5 @@ export class EnregistrerVoiturePage {
   ngOnInit() {
 
   }
-
-
-
 
 }
