@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MiseEnLocationPage } from '../mise-en-location/mise-en-location';
 import { FilterPage } from '../filter/filter';
 import { NavController, Platform, Alert } from 'ionic-angular';
+import { Voiture } from '../../entities/voiture';
 import { Geolocation } from '@ionic-native/geolocation';
 import {
   GoogleMaps,
@@ -23,15 +24,18 @@ import { ListVoitureProvider } from '../../providers/list-voiture/list-voiture';
   templateUrl: 'home.html'
 })
 
-
 export class HomePage {
 
+
+  private voiturePoint: string[];
   private latitude: number;
   private longitude: number;
   private markerLatLng: LatLng = new LatLng(0, 0);
 
   private POINTS: BaseArrayClass<LatLng>;
+  private LABEL : string[];
   listVoitureProvider: ListVoitureProvider;
+  arrayPointVoiture: Voiture[];
 
   initialMapLoad: boolean = true;
   map: GoogleMap;
@@ -74,6 +78,7 @@ export class HomePage {
     console.log(carListFiltered);
     for(let car of carListFiltered){
       this.POINTS.push(car.position);
+      this.LABEL.push(car.brand+" "+car.model+" "+String(car.price));
     }
   }
 
@@ -81,8 +86,10 @@ export class HomePage {
     this.markerLatLng.lng = this.longitude;
     this.markerLatLng.lat = this.latitude;
     this.initPoints();
+    let i=0;
     this.POINTS.forEach(element => {
       this.map.addMarker({
+        label: this.LABEL[i],
         position: element,
         iconData: {
           url: "../assets/imgs/car.png"
@@ -91,10 +98,14 @@ export class HomePage {
         marker.showInfoWindow();
         console.log(marker);
         marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+          // let voiture = this.voiturePoint[marker.getPosition.toString()];
+          // console.log(voiture.position.toString());
           confirm("Souhaitez vous réserver cette voiture ?");
         });
       });
-    });
+    i++;
+    }
+    );
   }
 
 
