@@ -27,15 +27,13 @@ import { ListVoitureProvider } from '../../providers/list-voiture/list-voiture';
 export class HomePage {
 
 
-  private voiturePoint: string[];
+  // private voiturePoint: string[];
   private latitude: number;
   private longitude: number;
   private markerLatLng: LatLng = new LatLng(0, 0);
 
-  private POINTS: BaseArrayClass<LatLng>;
-  private LABEL : string[];
   listVoitureProvider: ListVoitureProvider;
-  arrayPointVoiture: Voiture[];
+  voitureList: Voiture[];
 
   initialMapLoad: boolean = true;
   map: GoogleMap;
@@ -50,6 +48,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public geoLocation: Geolocation, public listProvider: ListVoitureProvider) {
     this.listVoitureProvider = listProvider;
+    this.voitureList = listProvider.getCarListFiltered();
   }
 
   ionViewDidLoad() {
@@ -72,41 +71,35 @@ export class HomePage {
     this.map.setDiv(null);
   }
 
-  initPoints() {
-    this.POINTS = new BaseArrayClass<LatLng>();
-    let carListFiltered = this.listVoitureProvider.getCarListFiltered();
-    console.log(carListFiltered);
-    for(let car of carListFiltered){
-      this.POINTS.push(car.position);
-      this.LABEL.push(car.brand+" "+car.model+" "+String(car.price));
+  addMarker() { 
+
+    var image = {
+      url: '../../assets/imgs/car.png'
+    };
+
+
+    this.markerLatLng.lng = this.longitude; 
+    this.markerLatLng.lat = this.latitude;
+    for(let voiture of this.voitureList){
+      this.map.addMarker({
+        title: voiture.model+" "+voiture.brand + "\nprix : "+voiture.price+" E/h", 
+        position: voiture.position
+      }).then((marker: Marker) => {
+          marker.showInfoWindow(); 
+          marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+            console.log(marker.getId); 
+            confirm("Voulez vous réservez cette voiture ?"); 
+          }); 
+      }); 
     }
+
+    this.map.addMarker({
+      title: "My position", 
+      position: new LatLng(this.latitude, this.longitude)
+    })
   }
 
-  addMarker() {
-    this.markerLatLng.lng = this.longitude;
-    this.markerLatLng.lat = this.latitude;
-    this.initPoints();
-    let i=0;
-    this.POINTS.forEach(element => {
-      this.map.addMarker({
-        label: this.LABEL[i],
-        position: element,
-        iconData: {
-          url: "../assets/imgs/car.png"
-        }
-      }).then((marker: Marker) => {
-        marker.showInfoWindow();
-        console.log(marker);
-        marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-          // let voiture = this.voiturePoint[marker.getPosition.toString()];
-          // console.log(voiture.position.toString());
-          confirm("Souhaitez vous réserver cette voiture ?");
-        });
-      });
-    i++;
-    }
-    );
-  }
+
 
 
   loadMap() {

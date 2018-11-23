@@ -26,5 +26,4 @@ export class Voiture {
     price: number;
     // reservation
     reservation: Reservation;
-
 }
