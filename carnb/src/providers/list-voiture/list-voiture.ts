@@ -40,9 +40,9 @@ import { LatLng } from '@ionic-native/google-maps';
   		let pt3: LatLng = new LatLng(45.185114, 5.770380);
   		let pt4: LatLng = new LatLng(45.197885, 5.776313);
 
-  		let voiture1: Voiture = new Voiture(pt1, user1, "Audi", "A3", 1);
-  		let voiture2: Voiture = new Voiture(pt2, user2, "Peugeot", "306", 1.2);
-  		let voiture3: Voiture = new Voiture(pt3, user3, "Citroen", "C4", 1.1);
+  		let voiture1: Voiture = new Voiture(pt1, user1, "Audi", "A3", 1.1);
+  		let voiture2: Voiture = new Voiture(pt2, user2, "Peugeot", "306", 2.2);
+  		let voiture3: Voiture = new Voiture(pt3, user3, "Citroen", "C4", 2.1);
   		let voiture4: Voiture = new Voiture(pt4, user4, "Peugeot", "206", 1.5);
 
   		this.carList = [

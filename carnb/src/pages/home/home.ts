@@ -16,11 +16,14 @@ import {
   BaseArrayClass
 } from '@ionic-native/google-maps';
 import { LiteralArray } from '@angular/compiler';
+import { ListVoitureProvider } from '../../providers/list-voiture/list-voiture';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
+
+
 export class HomePage {
 
   private latitude: number;
@@ -28,7 +31,7 @@ export class HomePage {
   private markerLatLng: LatLng = new LatLng(0, 0);
 
   private POINTS: BaseArrayClass<LatLng>;
-
+  listVoitureProvider: ListVoitureProvider;
 
   initialMapLoad: boolean = true;
   map: GoogleMap;
@@ -41,8 +44,8 @@ export class HomePage {
     }
   };
 
-  constructor(public navCtrl: NavController, public geoLocation: Geolocation) {
-
+  constructor(public navCtrl: NavController, public geoLocation: Geolocation, public listProvider: ListVoitureProvider) {
+    this.listVoitureProvider = listProvider;
   }
 
   ionViewDidLoad() {
@@ -67,14 +70,11 @@ export class HomePage {
 
   initPoints() {
     this.POINTS = new BaseArrayClass<LatLng>();
-    let pt1: LatLng = new LatLng(45.183914, 5.753960);
-    let pt2: LatLng = new LatLng(45.184412, 5.765550);
-    let pt3: LatLng = new LatLng(45.185114, 5.770380);
-    let pt4: LatLng = new LatLng(45.197885, 5.776313);
-    this.POINTS.push(pt1);
-    this.POINTS.push(pt2);
-    this.POINTS.push(pt3);
-    this.POINTS.push(pt4);
+    let carListFiltered = this.listVoitureProvider.getCarListFiltered();
+    console.log(carListFiltered);
+    for(let car of carListFiltered){
+      this.POINTS.push(car.position);
+    }
   }
 
   addMarker() {
