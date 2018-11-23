@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'page-Filter',
-    templateUrl: 'Filter.html'
+    templateUrl: 'filter.html'
 })
 
 export class FilterPage {

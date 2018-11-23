@@ -6,6 +6,7 @@ import { Voiture } from '../../entities/voiture';
 import { User } from '../../entities/user';
 import { LatLng } from '@ionic-native/google-maps';
 import { Reservation } from '../../entities/reservation';
+import {Geolocation} from '@ionic-native/geolocation';
 
 @Component({
 	selector: 'page-mise-en-location',
@@ -14,13 +15,27 @@ import { Reservation } from '../../entities/reservation';
 
 export class MiseEnLocationPage {
 	
-	constructor(public navCtrl: NavController, private alertCtrl: AlertController, carList: ListVoitureProvider ) {
-		this.carList = carList;
+	user : User;
+	position : LatLng;
+	vehicules : Voiture[];
+	latitude : number;
+	longitude : number;
+
+
+	constructor(public navCtrl: NavController, private alertCtrl: AlertController, carList: ListVoitureProvider, geoLocation : Geolocation) {
+		this.user = carList.getCurrentUser();
+		
+		geoLocation.getCurrentPosition().then((resp) => { 
+			this.latitude = resp.coords.latitude; 
+			this.longitude = resp.coords.longitude; 
+		}).catch((error) => { console.log('Error getting location', error); }); 
+		
+
+		this.vehicules = carList.getVoiture(this.user);
+		this.position = new LatLng(this.latitude, this.longitude);
+
 	}
 
-	carList = new ListVoitureProvider();
-	user : User = this.carList.CurrentUser;
-	position : LatLng = this.carList.Location;
 
 	date : Date = new Date();
 	// We get curent time (+ 1 hour) to display by default
@@ -30,14 +45,13 @@ export class MiseEnLocationPage {
 
 	range : number = 200;
 
-	vehicules : Voiture[] = this.carList.getVoiture(this.user);
 
 	// By default the vehicule picked is the first of the list
 	vehiculePicked : Voiture = this.vehicules[0];
 
 	logForm(){
 		// We change the vehicules parameters accordigly
-		this.vehiculePicked.position = this.position;	
+		this.vehiculePicked.position = this.position;
 		this.vehiculePicked.reservation = new Reservation(new Date(Date.parse(this.limit)), null, null, this.position, this.range, null);
 		this.vehiculePicked.available = true;
 

@@ -13,9 +13,7 @@ import { LatLng } from '@ionic-native/google-maps';
   @Injectable()
   export class ListVoitureProvider {
   	
-  	CurrentUser: User;
-  	Location: LatLng;
-
+  	currentUser: User;
   	userList: User[];
   	carList: Voiture[];
   	reservationList: Reservation[];
@@ -56,10 +54,10 @@ import { LatLng } from '@ionic-native/google-maps';
   		user1.carList = [voiture1, voiture2];
   		user2.carList = [voiture2];
   		user3.carList = [voiture3];
-		user4.carList = [voiture4];
-		  
-		// for testing
-		this.CurrentUser = user1;
+  		user4.carList = [voiture4];
+  		  
+  		// for testing
+  		this.currentUser = user5;
   	}
 
   	addVoiture(voiture: Voiture, user:User){
@@ -88,4 +86,7 @@ import { LatLng } from '@ionic-native/google-maps';
 
   	}
 
+    getCurrentUser(){
+      return this.currentUser;
+    }
   }
