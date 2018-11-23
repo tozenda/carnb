@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {Geolocation} from '@ionic-native/geolocation';
+import { ListVoitureProvider } from '../../providers/list-voiture/list-voiture';
 // import { NavController } from 'ionic-angular';
 // import { AlertController } from 'ionic-angular';
 
@@ -11,6 +13,19 @@ export class FilterPage {
 
     distanceSet: number;
     prixSet: number;
+    latitude: number;
+    longitude: number;
+    listVoitureProvider: ListVoitureProvider;
+
+    constructor(geoLocation: Geolocation, listVoitureProvider: ListVoitureProvider){
+        geoLocation.getCurrentPosition().then((resp) => { 
+            this.latitude = resp.coords.latitude; 
+            this.longitude = resp.coords.longitude; 
+        }).catch((error) => { console.log('Error getting location', error); }); 
+
+        this.listVoitureProvider = listVoitureProvider;
+    }
+    
 
     getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
         var R: number = 6371; // Radius of the earth in km
@@ -23,12 +38,11 @@ export class FilterPage {
     }
 
     deg2rad(deg) {
-        return deg * (Math.PI / 180)
+        return deg * (Math.PI / 180);
     }
 
     saveLink() {
-        console.log(this.distanceSet);
-        console.log(this.prixSet);
+        this.listVoitureProvider.updateFilteredList(this.prixSet, this.distanceSet, this.latitude, this.longitude);
     }
 
 }

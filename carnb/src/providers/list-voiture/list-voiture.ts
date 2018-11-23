@@ -16,6 +16,7 @@ import { LatLng } from '@ionic-native/google-maps';
   	currentUser: User;
   	userList: User[];
   	carList: Voiture[];
+    carListFiltered: Voiture[];
   	reservationList: Reservation[];
 
 
@@ -50,6 +51,8 @@ import { LatLng } from '@ionic-native/google-maps';
   		voiture3,
   		voiture4
   		];
+
+      this.carListFiltered = this.carList;
 
   		user1.carList = [voiture1, voiture2];
   		user2.carList = [voiture2];
@@ -89,4 +92,33 @@ import { LatLng } from '@ionic-native/google-maps';
     getCurrentUser(){
       return this.currentUser;
     }
+
+    getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+        var R: number = 6371; // Radius of the earth in km
+        var dLat = this.deg2rad(lat2 - lat1);  // deg2rad below
+        var dLon = this.deg2rad(lon2 - lon1);
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = R * c; // Distance in km
+        return d;
+    }
+
+    deg2rad(deg) {
+        return deg * (Math.PI / 180)
+    }
+
+    updateFilteredList(price: number, distance:number, latitude:number, longitude: number){
+      let tmpList: Voiture[] = [];
+      for (let car of this.carList) {
+        if(car.price<price && this.getDistanceFromLatLonInKm(car.position.lat, car.position.lng, latitude, longitude)<distance){
+          tmpList.push(car);
+        }
+      }
+      this.carListFiltered = tmpList;
+    }
+
+    getCarListFiltered(){
+      return this.carListFiltered;
+    }
+    
   }
