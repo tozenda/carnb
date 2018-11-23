@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MiseEnLocationPage } from '../mise-en-location/mise-en-location';
+import { FilterPage } from '../filter/filter';
 import { NavController, Platform, Alert } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import {
@@ -129,6 +130,10 @@ export class HomePage {
   goToLocation(event) {
     this.navCtrl.push(MiseEnLocationPage);
     console.log(event);
+  }
+
+  goToFilterPage(){
+    this.navCtrl.push(FilterPage);
   }
 
 }

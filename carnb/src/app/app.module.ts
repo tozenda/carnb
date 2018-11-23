@@ -16,6 +16,7 @@ import { SubscriptionPage } from '../pages/subscription/subscription';
 import { ProfilePage } from '../pages/profile/profile';
 import { MiseEnLocationPage } from '../pages/mise-en-location/mise-en-location';
 import { ListVoitureProvider } from '../providers/list-voiture/list-voiture';
+import { FilterPage } from '../pages/filter/filter';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ListVoitureProvider } from '../providers/list-voiture/list-voiture';
     SubscriptionPage, 
     ProfilePage,
     SubscriptionPage,
-    MiseEnLocationPage
+    MiseEnLocationPage,
+    FilterPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { ListVoitureProvider } from '../providers/list-voiture/list-voiture';
     LoginPage,
     SubscriptionPage,
     ProfilePage,
-    MiseEnLocationPage
+    MiseEnLocationPage,
+    FilterPage
   ],
   providers: [
     StatusBar,

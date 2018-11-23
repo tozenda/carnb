@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-navbar>
+        <h1>Filtres</h1>
+    </ion-navbar>
+    <form (ngSubmit)="logForm()">
+        <ion-list>
+            <h2>Distance</h2>
+            <ion-item>
+                <ion-range name="distanceSet" pin="true" min="0" max="200" [(ngModel)]="distanceSet" color="secondary">
+                    <ion-label range-left>0 m</ion-label>
+                    <ion-label range-right>200 m</ion-label>
+                </ion-range>
+
+            </ion-item>
+            <h2>Prix</h2>
+            <ion-item>
+                <ion-range name="prixSet" pin="true" min="0" max="3" [(ngModel)]="prixSet">
+                    <ion-label range-left>0€/h</ion-label>
+                    <ion-label range-right>3€/h</ion-label>
+                </ion-range>
+            </ion-item>
+            <ion-item>
+                <!-- <ion-label>Gender</ion-label>
+    <ion-select [(ngModel)]="gender">
+      <ion-option value="f">Female</ion-option>
+      <ion-option value="m">Male</ion-option>
+    </ion-select> -->
+            </ion-item>
+
+        </ion-list>
+    </form>
+    <button ion-button block (click)="saveLink()">Valider</button>
+</ion-header>
